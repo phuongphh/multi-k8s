@@ -12,7 +12,7 @@ after_success:
     - docker build -t phuongphh/multi-client ./client
     - docker build -t phuongphh/multi-nginx ./nginx
     - docker build -t phuongphh/multi-server ./server
-    - docker build -t phuongphh/worker ./worker
+    - docker build -t phuongphh/multi-worker ./worker
     # Log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # Take all those images and push to docker hub
