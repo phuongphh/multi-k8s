@@ -1,15 +1,14 @@
 sudo: required
 services:
     - docker
-#
-#before_install:
-#    - docker build -t phuongphh/react-test -f ./client/Dockerfile.dev ./client
 
-#script:
-#    - docker run -e CI=true phuongphh/react-test npm test
+before_install:
+    - docker build -t phuongphh/react-test -f ./client/Dockerfile.dev ./client
 
-#after_success:
 script:
+    - docker run -e CI=true phuongphh/react-test npm test
+
+after_success:
     - docker build -t phuongphh/multi-client ./client
     - docker build -t phuongphh/multi-nginx ./nginx
     - docker build -t phuongphh/multi-server ./server
