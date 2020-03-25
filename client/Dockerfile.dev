@@ -1,6 +1,11 @@
 FROM node:alpine
 WORKDIR '/app'
 COPY ./package.json ./
+
+RUN npm install npm-force-resolutions
 RUN npm install
+RUN npx npm-force-resolutions
+RUN npm install
+
 COPY . .
 CMD ["npm", "run", "start"] 

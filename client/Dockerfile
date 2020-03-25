@@ -1,7 +1,13 @@
 FROM node:alpine as builder
 WORKDIR '/app'
 COPY ./package.json ./
+
+#resolution configurations
+RUN npm install npm-force-resolutions
 RUN npm install
+RUN npx npm-force-resolutions
+RUN npm install
+
 COPY . .
 RUN npm run build
 
